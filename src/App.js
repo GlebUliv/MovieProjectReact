@@ -1,26 +1,117 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from "react";
+// import logo from './logo.svg';
+import "./App.css";
+import NowPlaying from "./components/NowPlaying/NowPlaying";
+import Latest from "./components/Latest/Latest";
+import Upcoming from "./components/Upcoming/Upcoming";
+import Modal from "./components/Modal/Modal";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+class App extends Component {
+  state = {
+    showModal: false,
+    title: "",
+    overview: "",
+    release_date: "",
+    vote_count: "",
+    vote_average: "",
+  };
+
+  showModal = (title, overview, release_date, vote_count, vote_average) => {
+    this.setState({
+      showModal: !this.state.showModal,
+      title,
+      overview,
+      release_date,
+      vote_count,
+      vote_average,
+    });
+  };
+
+  render() {
+    const {
+      showModal,
+      title,
+      overview,
+      release_date,
+      vote_count,
+      vote_average,
+    } = this.state;
+    return (
+      <div className="wrapper">
+        {showModal && (
+          <Modal
+            showModal={() => this.showModal()}
+            title={title}
+            overview={overview}
+            release_date={release_date}
+            vote_count={vote_count}
+            vote_average={vote_average}
+          />
+        )}
+
+        <div className="">
+          <NowPlaying
+            showModal={(
+              title,
+              overview,
+              release_date,
+              vote_count,
+              vote_average
+            ) =>
+              this.showModal(
+                title,
+                overview,
+                release_date,
+                vote_count,
+                vote_average
+              )
+            }
+          />
+        </div>
+
+        <div className="">
+          <Latest
+            showModal={(
+              title,
+              overview,
+              release_date,
+              vote_count,
+              vote_average
+            ) =>
+              this.showModal(
+                title,
+                overview,
+                release_date,
+                vote_count,
+                vote_average
+              )
+            }
+          />
+        </div>
+
+        <div className="">
+          <Upcoming
+            showModal={(
+              title,
+              overview,
+              release_date,
+              vote_count,
+              vote_average
+            ) =>
+              this.showModal(
+                title,
+                overview,
+                release_date,
+                vote_count,
+                vote_average
+              )
+            }
+          />
+        </div>
+      </div>
+    );
+  }
 }
 
 export default App;
