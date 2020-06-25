@@ -6,7 +6,6 @@ import Latest from "./components/Latest/Latest";
 import Upcoming from "./components/Upcoming/Upcoming";
 import Modal from "./components/Modal/Modal";
 
-
 class App extends Component {
   state = {
     showModal: false,

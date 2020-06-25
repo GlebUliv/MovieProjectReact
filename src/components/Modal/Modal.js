@@ -3,14 +3,14 @@ import "./Modal.css";
 
 class Modal extends Component {
   render() {
-      const {
-        showModal,
-        title,
-        overview,
-        release_date,
-        vote_count,
-        vote_average,
-      } = this.props;
+    const {
+      showModal,
+      title,
+      overview,
+      release_date,
+      vote_count,
+      vote_average,
+    } = this.props;
     return (
       <div
         className="modal-overlay"
@@ -33,9 +33,7 @@ class Modal extends Component {
             <br />
             Total votes: {vote_count}
           </h4>
-          <h4>
-            Vote average: {vote_average}
-          </h4>
+          <h4>Vote average: {vote_average}</h4>
         </div>
       </div>
     );

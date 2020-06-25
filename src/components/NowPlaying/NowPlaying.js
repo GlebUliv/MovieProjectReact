@@ -1,6 +1,7 @@
 import React, { Component } from "react";
-import "./NowPlaying.css";
+// import "./NowPlaying.css";
 import Spinner from "../Spinner/Spinner";
+import Movie from "../Movie/Movie";
 
 class NowPlaying extends Component {
   state = {
@@ -22,29 +23,20 @@ class NowPlaying extends Component {
   render() {
     const { showModal } = this.props;
     const { movies, showSpinner } = this.state;
+    // const { showSpinner } = this.state;
     return (
       <div className="list">
-          {showSpinner && <Spinner />}
-    
-          <h1>Now Playing</h1>
-        
+        {showSpinner && <Spinner />}
+
+        <h1>Now Playing</h1>
         <div className="main">
-          {movies.map(
-            ({ poster_path, title, overview, release_date, vote_count, vote_average }) => (
-              <div className="container playing">
-                <div className="content">
-                  {/* <p>{overview}</p> */}
-                  <img
-                    src={`https://image.tmdb.org/t/p/w200${poster_path}`}
-                    alt="Background"
-                    onClick={() => {
-                      showModal(title, overview, release_date, vote_count, vote_average);
-                    }}
-                  />
-                </div>
-              </div>
-            )
-          )}
+          {movies.map((movieProps, index) => (
+            <Movie
+              key={index}
+              movies={movieProps}
+              showModal={(...rest) => showModal(...rest)}
+            />
+          ))}
         </div>
       </div>
     );
