@@ -6,15 +6,20 @@ import Latest from "./components/Latest/Latest";
 import Upcoming from "./components/Upcoming/Upcoming";
 import Modal from "./components/Modal/Modal";
 
+
 class App extends Component {
-  state = {
-    showModal: false,
-    title: "",
-    overview: "",
-    release_date: "",
-    vote_count: "",
-    vote_average: "",
-  };
+
+  constructor(props) {
+    super(props);
+    this.state = {
+        showModal: false,
+        title: "",
+        overview: "",
+        releaseDate: "",
+        voteCount: "",
+        voteAverage: "",
+    };
+  }
 
   showModal = (title, overview, release_date, vote_count, vote_average) => {
     this.setState({
@@ -49,7 +54,7 @@ class App extends Component {
           />
         )}
 
-        <div className="">
+        <div>
           <NowPlaying
             showModal={(
               title,
@@ -69,7 +74,7 @@ class App extends Component {
           />
         </div>
 
-        <div className="">
+        <div>
           <Latest
             showModal={(
               title,
@@ -89,7 +94,7 @@ class App extends Component {
           />
         </div>
 
-        <div className="">
+        <div>
           <Upcoming
             showModal={(
               title,

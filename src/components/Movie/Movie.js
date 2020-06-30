@@ -2,9 +2,13 @@ import React, { Component } from "react";
 // import Spinner from "../Spinner/Spinner";
 
 class Movie extends Component {
-  state = {
-    movies: [],
-  };
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      movies: []
+    };
+  }
 
   render() {
     const {
@@ -18,7 +22,6 @@ class Movie extends Component {
         poster_path,
       },
     } = this.props;
-    // const { movies } = this.state;
     return (
       <div className="container playing">
         <div className="content">

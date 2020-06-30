@@ -3,15 +3,21 @@ import "./Upcoming.css";
 import Spinner from "../Spinner/Spinner";
 import Movie from "../Movie/Movie";
 
+const API_KEY = `${process.env.REACT_APP_API_KEY_YT}`;
+
 class Upcoming extends Component {
-  state = {
-    movies: [],
-    showSpinner: true,
-  };
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      movies: [],
+      showSpinner: true,
+    };
+  }
 
   componentDidMount() {
     fetch(
-      "https://api.themoviedb.org/3/movie/upcoming?api_key=1a271b8d8281edf6db7a03e7998beb84&language=en-US&page=1"
+      `https://api.themoviedb.org/3/movie/upcoming?api_key=${API_KEY}&language=en-US&page=1`
     )
       .then((res) => res.json())
       .then((data) => {
